@@ -44,7 +44,7 @@ function Cancel() {
     };
   
     return (<>
-       <GoBackButton navigate={'/home'} />
+       <GoBackButton navigate={'/'} />
       <div className="w-full max-w-md mx-auto">
       <form
         onSubmit={handleSubmit}

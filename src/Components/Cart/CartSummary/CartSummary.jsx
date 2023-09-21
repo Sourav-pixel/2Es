@@ -1,4 +1,4 @@
-import { Alert, Button, Fade } from '@mui/material';
+import {  Button,CircularProgress } from '@mui/material';
 import { useContext, useMemo, useState } from 'react';
 import CartItemCard from '../CartItemCard/CartItemCard';
 import { cartContext, updateCartContext } from "../../../App";
@@ -15,6 +15,7 @@ const CartSummary = () => {
     const { isUserFilledForm, userDeliveryDetails } = useContext(deliveryFormContext);
     const [deliveryDetails, setDeliveryDetails] = userDeliveryDetails;
     const [isUserFilledDeliveryForm, setIsUserFilledDeliveryForm] = isUserFilledForm;
+    const [isLoading, setIsLoading] = useState(false);
 
     const navigate = useNavigate();
 
@@ -45,7 +46,7 @@ const CartSummary = () => {
     const handlePlaceOrder = async () => {
         if (updatedCart.length > 0) {
             navigate('/track-order');
-
+            setIsLoading(true);
             // Prepare order details
        
             const orderDetails = {
@@ -73,6 +74,13 @@ const CartSummary = () => {
             // Save order details to local storage
             localStorageHandler('set', 'orderDetails', orderDetails);
         }
+        setTimeout(() => {
+            // Hide the loader
+            setIsLoading(false);
+
+            // Redirect to the next page
+            navigate('/track-order');
+        }, 5000);
     }
 
     return (
@@ -131,15 +139,20 @@ const CartSummary = () => {
                 </table>
 
                 {/* Place Order Button */}
-                <Button
-                    fullWidth
-                    onClick={handlePlaceOrder}
-                    disabled={isPlaceOrderBtnDisable}
-                    sx={{ textTransform: 'capitalize' }}
-                    variant='contained'
-                    color='error'>
-                    Place Order
-                </Button>
+             <Button
+                fullWidth
+                onClick={handlePlaceOrder}
+                disabled={isLoading} // Disable the button while loading
+                sx={{ textTransform: 'capitalize' }}
+                variant='contained'
+                color='error'
+            >
+                {isLoading ? (
+                    <CircularProgress size={24} color='inherit' /> // Show loader while loading
+                ) : (
+                    'Place Order'
+                )}
+            </Button>
             </div>
     )
 }

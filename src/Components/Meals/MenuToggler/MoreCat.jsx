@@ -34,7 +34,7 @@ const MoreCat = () => {
   }, [currentMenu])
 
   return (<div className="bg-gray-100">
-   <GoBackButton navigate={'/home'} />
+   <GoBackButton navigate={'/'} />
     <section className='space-y-9 text-center'>
 <h1 className='text-3xl font-bold'>Biscuit</h1>
       {/* Toggle Menu */}
