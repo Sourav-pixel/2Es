@@ -129,12 +129,12 @@ clean:[
 ],
 
 drinks:[
-    new Meal(40, 'Tide', drinks1, 9.99,''),
-    new Meal(41, 'Surf', drinks2, 10.99 ,''),
-    new Meal(42, 'Baby Cleanser', drinks3, 6.99 ,''),
-    new Meal(43, 'Dishwash', drinks4, 8.99 ,''),
-    new Meal(44, 'Lizol', drinks5, 12.99 ,''),
-    new Meal(45, 'Harpic', drinks6, 9.99 , ''),
+    new Meal(40, 'Real', drinks1, 9.99,''),
+    new Meal(41, 'Tropicana', drinks2, 10.99 ,''),
+    new Meal(42, 'Paper Boat', drinks3, 6.99 ,''),
+    new Meal(43, 'Natural', drinks4, 8.99 ,''),
+    new Meal(44, 'Slice', drinks5, 12.99 ,''),
+    new Meal(45, 'Maza', drinks6, 9.99 , ''),
 ],
 
 }
