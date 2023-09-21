@@ -84,21 +84,14 @@ export const fakeMeals = {
         new Meal(11, 'Green Chilli', vegetables6, 10,'')
     ],
 
-    meat: [
-        new Meal(12, 'Chicken', meat1, 200,''),
-        new Meal(13, 'Local Chicken', meat2, 300 ,''),
-        new Meal(14, 'Pork', meat3, 340),
-        new Meal(15, '', meat4, 8.99),
-        new Meal(16, 'Pork Tenderloin with Quinoa Pilaf', meat5, 12.99 ,''),
-        new Meal(17, 'Salmon with Grapefruit and Lentil Salad', meat6, 9.99 ,'')
-    ],
+ 
     dairy: [
-        new Meal(18, 'Amul Butter', dairy1, 9 ,''),
-        new Meal(19, 'Yougurt', dairy2, 10 ,''),
-        new Meal(20, 'Panner', dairy3, 6 ,''),
-        new Meal(21, 'Amul Cheese', dairy4, 80 ,''),
-        new Meal(22, 'Amul Milk', dairy5, 28 ,''),
-        new Meal(23, 'Amul Cream', dairy6, 40 ,'')
+        new Meal(12, 'Amul Butter', dairy1, 9 ,''),
+        new Meal(13, 'Yogurt', dairy2, 10 ,''),
+        new Meal(14, 'Panner', dairy3, 6 ,''),
+        new Meal(15, 'Amul Cheese', dairy4, 80 ,''),
+        new Meal(16, 'Amul Milk', dairy5, 28 ,''),
+        new Meal(17, 'Amul Cream', dairy6, 40 ,'')
 ],
 
 biscuits: [
@@ -136,12 +129,12 @@ clean:[
 ],
 
 drinks:[
-    new Meal(34, 'Tide', drinks1, 9.99,''),
-    new Meal(35, 'Surf', drinks2, 10.99 ,''),
-    new Meal(36, 'Baby Cleanser', drinks3, 6.99 ,''),
-    new Meal(37, 'Dishwash', drinks4, 8.99 ,''),
-    new Meal(38, 'Lizol', drinks5, 12.99 ,''),
-    new Meal(39, 'Harpic', drinks6, 9.99 , '')
+    new Meal(40, 'Tide', drinks1, 9.99,''),
+    new Meal(41, 'Surf', drinks2, 10.99 ,''),
+    new Meal(42, 'Baby Cleanser', drinks3, 6.99 ,''),
+    new Meal(43, 'Dishwash', drinks4, 8.99 ,''),
+    new Meal(44, 'Lizol', drinks5, 12.99 ,''),
+    new Meal(45, 'Harpic', drinks6, 9.99 , ''),
 ],
 
 }
@@ -151,7 +144,7 @@ drinks:[
 
 
 // Combining all meals into a single array for effortless searching
-export const allMeals = fakeMeals.fruits.concat(fakeMeals.vegetables, fakeMeals.dairy,fakeMeals.biscuits,fakeMeals.meat,fakeMeals.condiments,fakeMeals.clean,fakeMeals.bakery,fakeMeals.drinks);
+export const allMeals = fakeMeals.fruits.concat(fakeMeals.vegetables, fakeMeals.dairy,fakeMeals.biscuits,fakeMeals.condiments,fakeMeals.clean,fakeMeals.bakery,fakeMeals.drinks);
 
 
 
