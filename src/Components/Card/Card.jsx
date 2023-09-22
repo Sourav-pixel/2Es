@@ -1,5 +1,5 @@
-import React from 'react';
-import { Card as MUICard, CardMedia, CardContent, Typography, ButtonBase, Box, Fade } from '@mui/material';
+import React, { useState, useEffect } from 'react';
+import { Card as MUICard, CardMedia, CardContent, Typography, ButtonBase, Box, Fade, Skeleton } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
@@ -20,6 +20,17 @@ export const hoverEffectStyle = {
 const Card = ({ meal }) => {
   const { id, name, description, img, price } = meal;
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate a 3-second loading delay
+    const timeout = setTimeout(() => {
+      setLoading(false);
+    }, 1100);
+
+    // Clear the timeout when the component unmounts
+    return () => clearTimeout(timeout);
+  }, []);
 
   return (
     <Fade onDurationChange={() => 1500} in={true}>
@@ -32,13 +43,17 @@ const Card = ({ meal }) => {
           <Box>
             {/* Food Image */}
             <CardMedia className="pt-4">
-              <Fade in={true} onDurationChange={() => 1500}>
-                <img
-                  className="h-36 sm:h-44 md:h-32 lg:h-44 mx-auto"
-                  src={img}
-                  alt={name}
-                />
-              </Fade>
+              {loading ? (
+                <Skeleton variant="rectangular" width={260} height={180} />
+              ) : (
+                <Fade in={true} onDurationChange={() => 1500}>
+                  <img
+                    className="h-36 sm:h-44 md:h-32 lg:h-44 mx-auto"
+                    src={img}
+                    alt={name}
+                  />
+                </Fade>
+              )}
             </CardMedia>
             <CardContent className="text-center">
               {/* Food Name */}
@@ -48,17 +63,29 @@ const Card = ({ meal }) => {
                 fontSize={'1.05rem'}
                 component="div"
               >
-                {`${name.length > 24 ? name.slice(0, 24) + '...' : name}`}
+                {loading ? (
+                  <Skeleton />
+                ) : (
+                  `${name.length > 24 ? name.slice(0, 24) + '...' : name}`
+                )}
               </Typography>
 
               {/* Food Short Descriptions */}
               <Typography variant="body2" color="text.secondary">
-                {`${description.length > 30 ? description.slice(0, 25) + '...' : description}`}
+                {loading ? (
+                  <Skeleton />
+                ) : (
+                  `${description.length > 30 ? description.slice(0, 25) + '...' : description}`
+                )}
               </Typography>
 
               {/* Food Price */}
               <Typography sx={{ mt: 1.3 }} variant="h6" component="div">
-               {`₹${price}`}
+                {loading ? (
+                  <Skeleton width={100} />
+                ) : (
+                  `₹${price}`
+                )}
               </Typography>
             </CardContent>
           </Box>
@@ -67,17 +94,5 @@ const Card = ({ meal }) => {
     </Fade>
   );
 };
-
-// const ProductCarousel = ({ meals }) => {
-//   return (
-//     <Carousel showThumbs={false}>
-//       {meals.map((meal) => (
-//         <div key={meal.id}>
-//           <Card meal={meal} />
-//         </div>
-//       ))}
-//     </Carousel>
-//   );
-// };
 
 export default Card;
