@@ -1,35 +1,43 @@
 import styled from '@emotion/styled';
 import { Fab, InputBase, alpha, useMediaQuery } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
-import { useRef } from 'react';
+import { useRef,useState,useEffect } from 'react';
 import { allMeals } from "../../../assets/FakeData/FakeData";
-
+import Fuse from 'fuse.js';
 const SearchBar = ({ setSearchResults, setSearchBarError }) => {
     const inputRef = useRef(null);
-
+  const [fuse, setFuse] = useState(null);
     // Media Quarry
     const isSmallScreen = useMediaQuery('(min-width: 640px)');
 
     // Search Btn handler 
-    const handleSearch = () => {
+    useEffect(() => {
+        const fuseOptions = {
+          keys: ['name'], // Specify which property to search in (adjust as needed)
+          includeScore: true, // Include score for ranking
+          threshold: 0.4, // Adjust this value for search accuracy
+        };
+    
+        setFuse(new Fuse(allMeals, fuseOptions));
+      }, []);
+    
+      // Search Btn handler
+      const handleSearch = () => {
         const searchPrompt = inputRef.current.value;
-
+    
         if (searchPrompt) {
-
-            const results = allMeals.filter(meal => {
-                const mealName = meal.name.toLowerCase();
-                return mealName.includes(searchPrompt.toLowerCase());
-            })
-
-            if (results.length > 0) {
-                setSearchBarError('')
-                setSearchResults(results)
-            } else {
-                setSearchBarError('No matching meals!')
-            }
+          const results = fuse.search(searchPrompt);
+    
+          if (results.length > 0) {
+            const filteredResults = results.map((result) => result.item);
+            setSearchBarError('');
+            setSearchResults(filteredResults);
+          } else {
+            setSearchBarError('No matching !');
+          }
         }
-    }
-
+      };
+    
     // This MUI sub-components for SearchBar
     const Search = styled('div')(({ theme }) => ({
         position: 'relative',
@@ -81,7 +89,7 @@ const SearchBar = ({ setSearchResults, setSearchBarError }) => {
 
             <StyledInputBase
                 inputRef={inputRef}
-                placeholder="Search meal items..."
+                placeholder="Search items..."
                 inputProps={{ 'aria-label': 'search' }} />
 
             {/* Search Button */}
