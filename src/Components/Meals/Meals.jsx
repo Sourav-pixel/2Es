@@ -31,7 +31,7 @@ const Meals = () => {
   }, [currentMenu])
 
   return (
-    <section className='space-y-9'>
+    <section className='space-y-9 '>
 
       {/* Toggle Menu */}
       <MenuToggler

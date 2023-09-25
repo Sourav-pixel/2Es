@@ -13,6 +13,7 @@ import Login from "./Components/Login/Login";
 import TrackOrder from "./Components/TrackOrder/TrackOrder";
 import MoreCat from "./Components/Meals/MenuToggler/MoreCat";
 import Cancel from "./Components/CancelOrder/Cancle";
+import AboutUs from "./Components/About/AboutUs"
 export const cartContext = createContext();
 export const updateCartContext = createContext();
 export const userContext = createContext();
@@ -52,6 +53,7 @@ function App() {
                   <Route path="/login" element={<Login />} />
 <Route path="/more" element={<MoreCat />} />
 <Route path="/cancel" element={<Cancel />} />
+<Route path="/aboutus" element={<AboutUs />} />
                   {/* Private Route */}
                   <Route element={<PrivateRoute />}>
                     <Route path="/cart" element={<Cart />} />

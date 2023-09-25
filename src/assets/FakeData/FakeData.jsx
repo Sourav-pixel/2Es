@@ -67,7 +67,7 @@ class Meal {
 export const fakeMeals = {
 
   fruits: [
-        new Meal(0, 'Banana', fruits1, 30,''),
+        new Meal(0, 'Banana', fruits1, 30,'dorzone'),
         new Meal(1, 'Apple', fruits2, 70,''),
         new Meal(2, 'Orange', fruits3, 50,''),
         new Meal(3, 'Green Grape', fruits4, 40 ,''),

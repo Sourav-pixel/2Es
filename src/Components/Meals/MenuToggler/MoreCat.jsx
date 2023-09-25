@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import Card from '../../Card/Card';
 import { fakeMeals } from '../../../assets/FakeData/FakeData';
 import GoBackButton from '../../GoBackButton/GoBackButton'
-
+import SearchMeals from '../../SearchMeals/SearchMeals';
 import Condiments from './condiments';
 import { useNavigate } from 'react-router-dom';
 import { cartContext } from '../../../App';
@@ -35,6 +35,7 @@ const MoreCat = () => {
 
   return (<div className="bg-gray-100">
    <GoBackButton navigate={'/'} />
+   <SearchMeals />
     <section className='space-y-9 text-center'>
 <h1 className='text-3xl font-bold'>Biscuit</h1>
       {/* Toggle Menu */}

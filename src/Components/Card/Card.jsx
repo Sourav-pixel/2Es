@@ -26,7 +26,7 @@ const Card = ({ meal }) => {
     // Simulate a 3-second loading delay
     const timeout = setTimeout(() => {
       setLoading(false);
-    }, 1100);
+    }, 480);
 
     // Clear the timeout when the component unmounts
     return () => clearTimeout(timeout);

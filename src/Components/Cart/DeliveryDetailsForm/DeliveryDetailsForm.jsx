@@ -12,7 +12,7 @@ const DeliveryDetailsForm = () => {
     const [isUserFilledDeliveryForm, setIsUserFilledDeliveryForm] = isUserFilledForm;
     const [deliveryDetails, setDeliveryDetails] = userDeliveryDetails;
     const [updatedCart, setUpdatedCart] = useContext(updateCartContext);
-    const { name, email, phone, area, city, pin, street } = deliveryDetails;
+    const { name, email, phone, area, city, pin, street, landmark } = deliveryDetails;
 
     const { register, handleSubmit, formState: { errors } } = useForm();
 
@@ -57,7 +57,8 @@ const DeliveryDetailsForm = () => {
                     new Field(3, 'city', 'City*', city, true),
                     new Field(4, 'pin', 'pin*', pin, true),
                     new Field(5, 'street', 'Street', street, false),
-                    new Field(6, 'phone', 'phone*', phone, true),
+                    new Field(6, 'landmark', 'Landmark', landmark, false),
+                    new Field(7, 'phone', 'phone*', phone, true),
 
                 ].map(field => (
                     <InputField

@@ -52,7 +52,8 @@ const CartSummary = () => {
             const orderDetails = {
                 delivery: {
                     restaurant_location: 'Dibrugarh, Assam, India',
-                    customer_location: `${deliveryDetails.area} ,${deliveryDetails.city}-${deliveryDetails.pin} ${deliveryDetails.street}`,
+                    customer_location: `${deliveryDetails.area} ,${deliveryDetails.city}-${deliveryDetails.pin} ,${deliveryDetails.landmark}`,
+                    customer_street:deliveryDetails.street,
                     customer_contact: deliveryDetails.phone
                 },
                 cart: updatedCart.map((meal) => ({
@@ -102,7 +103,7 @@ const CartSummary = () => {
                     <li>To
                         <strong>
                             {isUserFilledDeliveryForm ?
-                                ` ${deliveryDetails.area},${deliveryDetails.city}-${deliveryDetails.pin} ` : ' ... '}
+                                ` ${deliveryDetails.area},${deliveryDetails.city}-${deliveryDetails.pin},${deliveryDetails.landmark} ` : ' ... '}
                         </strong>
                     </li>
                     <li>Contact No :

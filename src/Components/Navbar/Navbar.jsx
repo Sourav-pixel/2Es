@@ -3,7 +3,7 @@ import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import CssBaseline from '@mui/material/CssBaseline';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
-import logo_dark from "/Logo_black.png";
+import logo_dark from "/logo_main.png";
 import { Fab, IconButton, Tooltip } from '@mui/material';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { useNavigate } from 'react-router-dom';
@@ -55,7 +55,7 @@ const Navbar = (props) => {
 
                         {/* Brand Icon*/}
                         <img onClick={() => navigate('/home')}
-                            className='h-8 my-auto cursor-pointer'
+                            className='h-10 my-auto cursor-pointer'
                             src={logo_dark}
                             onLoad={React.lazy}
                             alt="red_onion" />
