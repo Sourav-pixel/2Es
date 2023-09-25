@@ -1044,6 +1044,13 @@
   resolved "https://registry.yarnpkg.com/@floating-ui/utils/-/utils-0.1.4.tgz#19654d1026cc410975d46445180e70a5089b3e7d"
   integrity sha512-qprfWkn82Iw821mcKofJ5Pk9wgioHicxcQMxx+5zt5GSKoqdWvgG5AxVmpmUUjzTLPVSH5auBrhI93Deayn/DA==
 
+"@google-pay/button-react@^3.0.10":
+  version "3.0.10"
+  resolved "https://registry.yarnpkg.com/@google-pay/button-react/-/button-react-3.0.10.tgz#e2e75e5c8e45fb882a3a0d1290ed4e6f0350e657"
+  integrity sha512-6lFESkpkIqnXGbbeD+kZ696+MJI+TrZYFBTuGpSvf98nvaE7fHffeV34i2ebZBqUkLi/4HicoVc8sG71KWKy+g==
+  dependencies:
+    "@types/googlepay" "^0.7.0"
+
 "@grpc/grpc-js@~1.7.0":
   version "1.7.3"
   resolved "https://registry.npmjs.org/@grpc/grpc-js/-/grpc-js-1.7.3.tgz"
@@ -1323,6 +1330,11 @@
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@types/estree/-/estree-1.0.1.tgz#aa22750962f3bf0e79d753d3cc067f010c95f194"
   integrity sha512-LG4opVs2ANWZ1TJoKc937iMmNstM/d0ae1vNbnBvBhqCSezgVUOzcLCqbI5elV8Vy6WKwKjaqR+zO9VKirBBCA==
+
+"@types/googlepay@^0.7.0":
+  version "0.7.2"
+  resolved "https://registry.yarnpkg.com/@types/googlepay/-/googlepay-0.7.2.tgz#1ba7633caa27340b101952dc92e1afb3a8be529d"
+  integrity sha512-ZYFviDehf53an2ezqiEwQ3dL3TcQM7OeBhKwzX9NYt61y6BqVc/74a/f8cJ3dsEVlAlcctC4NfeB+Z8JxbiYKw==
 
 "@types/long@^4.0.1":
   version "4.0.2"

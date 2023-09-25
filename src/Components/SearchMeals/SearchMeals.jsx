@@ -14,7 +14,7 @@ const SearchMeals = () => {
 
     return (
         <section>
-            <div className='md:h-14 sm:h-72 h-64 flex align-middle justify-center'>
+            <div className='md:h-14 sm:h-12 h-12 flex align-middle justify-center'>
                 {/* SearchBar */}
                 <div className='w-full max-w-md'> {/* Adjust the max-width here */}
                     <SearchBar
