@@ -1,8 +1,9 @@
 import { lazy } from 'react';
 import logo_white from "/logo_test.png";
-
+import { useNavigate } from 'react-router-dom';
 
 const Footer = () => {
+    const navigate = useNavigate();
     return (
         <footer className='bg-gradient-to-r from-blue-500 to-purple-500 md:py-8 pt-6 pb-2'>
             <div className='container sm:px-5 px-6 md:space-y-12 sm:space-y-14 space-y-10 mx-auto'>
@@ -13,7 +14,7 @@ const Footer = () => {
                             className='sm:h-14 h-14 bg-cover '
                             onLoad={lazy}
                             src={logo_white}
-                            alt="red_onion"
+                            alt="logo"
                         />
                     </div>
 
@@ -28,12 +29,12 @@ const Footer = () => {
                     {/* Copyright */}
                     <div className='col lg:col-span-7 md:text-start text-center md:order-first order-last'>
                    
-                        <a href=""
+                        <div 
                             target="_blank" rel="noopener noreferrer">
                             <span className='md:text-gray-400 text-gray-500 text-xs'>
                                 copyright@sourav2023
                             </span>
-                        </a>
+                        </div>
                     </div>
 
                     {/* Privacy & Policy */}
@@ -42,10 +43,10 @@ const Footer = () => {
                             ['Privacy Policy', 'About Us', 'Our Vision'].map((link, i) => (
                                 <li key={i}
                                     className='col text-sm text-center'>
-                                    <a className='sm:tracking-wider hover:underline'
-                                        href='/aboutus'>
+                                    <div className='sm:tracking-wider hover:underline cursor-pointer'
+                                           onClick={() => navigate('/aboutus')}>
                                         {link}
-                                    </a>
+                                    </div>
                                 </li>
                             ))
                         }

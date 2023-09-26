@@ -54,7 +54,7 @@ const Navbar = (props) => {
                     <div className='flex my-auto sm:px-9 px-4 justify-between'>
 
                         {/* Brand Icon*/}
-                        <img onClick={() => navigate('/home')}
+                        <img onClick={() => navigate('/')}
                             className='h-10 my-auto cursor-pointer'
                             src={logo_dark}
                             onLoad={React.lazy}

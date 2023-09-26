@@ -27,7 +27,7 @@ const Cart = () => {
             <section className='min-h-screen '>
                 <section className='lg:space-y-9 space-y-5 container px-4 mx-auto'>
                     {/* GoBack Button */}
-                    <GoBackButton navigate={'/home'} />
+                    <GoBackButton navigate={'/'} />
 
                     <deliveryFormContext.Provider
                         value={{

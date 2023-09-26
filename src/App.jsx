@@ -18,6 +18,7 @@ export const cartContext = createContext();
 export const updateCartContext = createContext();
 export const userContext = createContext();
 
+
 function App() {
 
   // Note: If we used 2_States for Cart to avoid unwanted bug's //
@@ -48,12 +49,13 @@ function App() {
               <main className="min-h-screen">
                 <Routes>
                   <Route path="/" element={<Home />} />
-                  <Route path="/home" element={<Home />} />
+                  {/* <Route path="/home" element={<Home />} /> */}
                   <Route path="/meal/:mealId" element={<OrderMeal />} />
                   <Route path="/login" element={<Login />} />
 <Route path="/more" element={<MoreCat />} />
 <Route path="/cancel" element={<Cancel />} />
 <Route path="/aboutus" element={<AboutUs />} />
+
                   {/* Private Route */}
                   <Route element={<PrivateRoute />}>
                     <Route path="/cart" element={<Cart />} />
