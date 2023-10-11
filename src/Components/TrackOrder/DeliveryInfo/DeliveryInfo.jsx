@@ -38,7 +38,7 @@ const defaultOptions = {
 
   
     return (
-        <div className='col bg-gray-100 lg:order-none order-first space-y-5 px-4 lg:py-6 py-5 rounded-xl mx-auto w-full sm:max-w-[30rem] max-w-[26rem] lg:max-w-[21rem]'>
+        <div className='col bg-gray-100 lg:order-none order-first space-y-5 px-4 lg:py-6 py-5 rounded-xl mx-auto w-full sm:max-w-[30rem] max-w-[26rem] lg:max-w-[30rem]'>
       <div className='space-y-2.5'></div>
       <div className='space-y-0'>
       <Lottie options={defaultOptions} height={200} width={200} />

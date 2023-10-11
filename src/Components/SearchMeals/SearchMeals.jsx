@@ -9,8 +9,8 @@ const SearchMeals = () => {
     const [searchBarError, setSearchBarError] = useState('');
 
     // Remove searchBar error 
-    // Automatically after 2.7 sec
-    useMemo(() => setTimeout(() => setSearchBarError(''), 2700), [searchBarError])
+    // Automatically after .7 sec
+    useMemo(() => setTimeout(() => setSearchBarError(''), 700), [searchBarError])
 
     return (
         <section>

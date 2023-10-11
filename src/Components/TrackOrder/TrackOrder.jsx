@@ -33,26 +33,7 @@ const TrackOrder = () => {
                         {/* Go Back Button */}
                         <GoBackButton navigate={'/'} />
 
-                        <section className='grid lg:grid-cols-3 pt-2 pb-12 grid-cols-1 lg:gap-x-5 gap-y-7'>
-                            {/* Google Map */}
-                            <div className='lg:order-none order-last col-span-2 rounded-md lg:h-[27rem] mx-auto w-full lg:max-w-none sm:max-w-[30rem] max-w-[26rem] bg-gray-100'>
-                                <iframe
-                                    title="Google Map"
-                                    className='rounded-md'
-                                    width="100%"
-                                    height={isLargeScreen ? "440" : "220"}
-                                    frameBorder="0"
-                                    loading='lazy'
-                                    scrolling="no"
-                                    marginHeight="0"
-                                    marginWidth="0"
-                                    src={`https://www.google.com/maps?q=${delivery.customer_location.toLowerCase()}&output=embed`}
-                                ></iframe>
-                            </div>
-
-                            {/* Delivery Info */}
-                            <DeliveryInfo delivery={delivery} />
-                        </section>
+                        <DeliveryInfo delivery={delivery} />
                     </section>
                 </Fade>
             )}

@@ -1,107 +1,106 @@
-import styled from '@emotion/styled';
-import { Fab, InputBase, alpha, useMediaQuery } from '@mui/material';
+import React, { useRef, useState, useEffect } from 'react';
+import { alpha, useMediaQuery } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
-import { useRef,useState,useEffect } from 'react';
-import { allMeals } from "../../../assets/FakeData/FakeData";
+import InputBase from '@mui/material/InputBase';
+import Fab from '@mui/material/Fab';
 import Fuse from 'fuse.js';
-const SearchBar = ({ setSearchResults, setSearchBarError }) => {
-    const inputRef = useRef(null);
-  const [fuse, setFuse] = useState(null);
-    // Media Quarry
-    const isSmallScreen = useMediaQuery('(min-width: 640px)');
+import { allMeals } from "../../../assets/FakeData/FakeData";
 
-    // Search Btn handler 
-    useEffect(() => {
-        const fuseOptions = {
-          keys: ['name'], // Specify which property to search in (adjust as needed)
-          includeScore: true, // Include score for ranking
-          threshold: 0.4, // Adjust this value for search accuracy
-        };
-    
-        setFuse(new Fuse(allMeals, fuseOptions));
-      }, []);
-    
-      // Search Btn handler
-      const handleSearch = () => {
-        const searchPrompt = inputRef.current.value;
-    
-        if (searchPrompt) {
-          const results = fuse.search(searchPrompt);
-    
-          if (results.length > 0) {
-            const filteredResults = results.map((result) => result.item);
-            setSearchBarError('');
-            setSearchResults(filteredResults);
-          } else {
-            setSearchBarError('No matching !');
-          }
-        }
-      };
-    
-    // This MUI sub-components for SearchBar
-    const Search = styled('div')(({ theme }) => ({
+const SearchBar = ({ setSearchResults, setSearchBarError }) => {
+  const inputRef = useRef(null);
+  const [fuse, setFuse] = useState(null);
+
+  // Media Query
+  const isSmallScreen = useMediaQuery('(min-width: 640px)');
+
+  // Search Btn handler 
+  useEffect(() => {
+    const fuseOptions = {
+      keys: ['name'],
+      includeScore: true,
+      threshold: 0.4,
+    };
+
+    setFuse(new Fuse(allMeals, fuseOptions));
+  }, []);
+
+  const handleSearch = () => {
+    const searchPrompt = inputRef.current.value;
+
+    if (searchPrompt) {
+      const results = fuse.search(searchPrompt);
+
+      if (results.length > 0) {
+        const filteredResults = results.map((result) => result.item);
+        setSearchBarError('');
+        setSearchResults(filteredResults);
+      } else {
+        setSearchBarError('No matching results!');
+      }
+    }
+  };
+
+  return (
+    <div style={{ position: 'relative', width: '100%' }}>
+      <div style={{
         position: 'relative',
         display: 'flex',
         alignItems: 'center',
-        paddingRight: '0.1rem',
         borderRadius: '1.5rem',
-        backgroundColor: alpha(theme.palette.common.white, 1),
-        marginRight: 'auto',
-        marginLeft: 'auto',
-        boxShadow: '0 1px 2px 0 rgb(0 0 0 / 0.05)',
-        width: '85%',
-        [theme.breakpoints.up('md')]: {
-            width: '73%',
+        backgroundColor: alpha('#fff', 1),
+        boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+        width: '75%',
+        height:'40px',
+        margin: '0 auto',
+        [isSmallScreen ? '@media (min-width: 960px)' : '']: {
+          width: isSmallScreen ? '73%' : '77%',
         },
-        [theme.breakpoints.up('lg')]: {
-            width: '77%',
-        }
-    }));
+      }}>
+        <div style={{
+          padding: isSmallScreen ? '8px 16px' : '4px 8px',
+          height: '100%',
+          position: 'absolute',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}>
+          <SearchIcon fontSize={isSmallScreen ? 'medium' : 'small'} />
+        </div>
 
-    const SearchIconWrapper = styled('div')(({ theme }) => ({
-        padding: isSmallScreen ? theme.spacing(0, 2) : theme.spacing(0, 1.3),
-        height: '100%',
-        position: 'absolute',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-    }));
-
-    const StyledInputBase = styled(InputBase)(({ theme }) => ({
-        color: 'inherit',
-        '& .MuiInputBase-input': {
-            padding: isSmallScreen ? theme.spacing(1, 1, 1, 0) : theme.spacing(0.8, 0.8, 0.8, 0),
-            // vertical padding + font size from searchIcon
-            paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-            transition: theme.transitions.create('width'),
+        <InputBase
+          inputRef={inputRef}
+          placeholder="Search items..."
+          style={{
+            color: 'inherit',
+            padding: isSmallScreen ? '8px 8px 8px 0' : '4px 4px 4px 0',
+            paddingLeft: isSmallScreen ? 'calc(1em + 32px)' : 'calc(1em + 16px)',
+            transition: 'width 300ms ease-in-out',
             width: '70%',
-            [theme.breakpoints.up('md')]: {
-                width: '25ch',
+            [isSmallScreen ? '@media (min-width: 600px)' : '']: {
+              width: isSmallScreen ? '25ch' : '20ch',
             },
-        },
-    }));
+          }}
+        />
 
-    return (
-        <Search>
-            <SearchIconWrapper>
-                <SearchIcon fontSize={isSmallScreen ? 'medium' : 'small'} />
-            </SearchIconWrapper>
-
-            <StyledInputBase
-                inputRef={inputRef}
-                placeholder="Search items..."
-                inputProps={{ 'aria-label': 'search' }} />
-
-            {/* Search Button */}
-            <Fab onClick={handleSearch}
-                sx={{ marginLeft: 'auto', px: isSmallScreen ? 2 : 1.7, py: isSmallScreen ? 2.25 : 1.5, textTransform: 'capitalize', boxShadow: 'none', fontSize: isSmallScreen ? '0.9rem' : '0.8rem', ":active": { boxShadow: 'none' } }}
-                variant="extended"
-                size='small'
-                color='error'>
-                Search
-            </Fab>
-        </Search>
-    )
+        <Fab
+          onClick={handleSearch}
+          
+          style={{
+            marginLeft: 'auto',
+            padding: isSmallScreen ? '8px 16px' : '4px 8px',
+            textTransform: 'capitalize',
+            boxShadow: 'none',
+            fontSize: isSmallScreen ? '0.9rem' : '0.8rem',
+          }}
+          variant="extended"
+          size='small'
+          color='error'
+        >
+          Search
+        </Fab>
+      </div>
+    </div>
+  );
 };
 
 export default SearchBar;
